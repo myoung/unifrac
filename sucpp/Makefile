@@ -81,11 +81,12 @@ ifeq (,$(findstring pgi,$(COMPILER)))
 	CPPFLAGS += -Wextra -Wno-unused-parameter
 endif
 
-ifeq ($(PLATFORM),Darwin)
+#ifeq ($(PLATFORM),Darwin)
         BLASLIB=-llapacke -lcblas
-else
-        BLASLIB=-lcblas
-endif
+#else
+#        BLASLIB=-lcblas
+#endif
+LDDFLAGS += -shlib
 
 
 CPPFLAGS += -Wall  -std=c++11 -pedantic -I. $(OPT) -fPIC -L$(CONDA_PREFIX)/lib
